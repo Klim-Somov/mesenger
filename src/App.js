@@ -13,7 +13,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Message name={name} age={35} foo={foo}/>
+        <Message name={name} age={35} foo={foo} purple={true}/>
+        <Message name="Other name" age={76} foo={foo}/>
       </header>
     </div>
   );
