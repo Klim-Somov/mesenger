@@ -1,4 +1,6 @@
-export const Message = ({name}) => {
+export const Message = ({name, foo}) => {
   
-    return <h3> Hello {name} </h3>;
+    return (
+    <h3 onClick={foo}
+    > Hello {name} </h3>);
 };
