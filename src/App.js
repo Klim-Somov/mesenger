@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
-import "./App.css";
+
+import "./App.scss";
 import { Message } from "./components/message/Message";
-import { findAllInRenderedTree } from "react-dom/test-utils";
+
 
 const name = 'Klim'
 
