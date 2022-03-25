@@ -1,4 +1,5 @@
 import {  useState } from "react";
+import "./Form.scss";
 export default function Form({onSubmit}) {
 
 const [value, setValue] = useState('')
@@ -16,9 +17,9 @@ const hendleChange = (e) => {
 }
   return (
     <div>
-      <form onSubmit={submitHendler} >
-        <input value={value} onChange={hendleChange} type="text" />
-        <input type="submit" />
+      <form className="form" onSubmit={submitHendler} >
+        <input className="form__input" value={value} onChange={hendleChange} type="text" />
+        <input className="form__btn" type="submit" />
       </form>
     </div>
   );
