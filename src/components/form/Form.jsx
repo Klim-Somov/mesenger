@@ -5,6 +5,7 @@ const [value, setValue] = useState('')
 
 const submitHendler = (e) => {
 e.preventDefault();
+if (value === "") return
 onSubmit(value)
 setValue('')
 }
