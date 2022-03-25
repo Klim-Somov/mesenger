@@ -1,12 +1,18 @@
+
 import "./Message.scss";
-export const Message = ({ name, foo, purple }) => {
+export const Message = ({ author, text}) => {
   return (
-    <h3
+    <div>
+    {/* <h3
       className={"message__header " + (!purple ? "purple-header" : "")}
       onClick={foo}
     >
       Hello {name}
-    </h3>
-    
+    </h3> */}
+    <div className="message" >
+      <span className="purple-header" >{author}</span>
+      <span>{text}</span>
+    </div>
+    </div>
   );
 };

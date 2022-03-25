@@ -4,5 +4,10 @@
 }
 .purple-header {
     color: purple;
-    font-size: 78px;
+    
+}
+.message {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
 }
