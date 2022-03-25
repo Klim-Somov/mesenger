@@ -7,5 +7,6 @@ export const Message = ({ name, foo, purple }) => {
     >
       Hello {name}
     </h3>
+    
   );
 };

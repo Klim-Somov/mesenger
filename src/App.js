@@ -1,5 +1,6 @@
 
 import "./App.scss";
+import { Counter } from "./components/example/Example";
 import { Message } from "./components/message/Message";
 
 
@@ -13,8 +14,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Counter />
         <Message name={name} age={35} foo={foo} purple={true}/>
         <Message name="Other name" age={76} foo={foo}/>
+   
+
       </header>
     </div>
   );
