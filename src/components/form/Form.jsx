@@ -10,14 +10,12 @@ if (value === "") return
 onSubmit(value)
 setValue('')
 }
-
-
 const hendleChange = (e) => {
     setValue(e.target.value) 
 }
   return (
     <div>
-      <form className="form" onSubmit={submitHendler} >
+      <form className="form"  onSubmit={submitHendler} >
         <input className="form__input" value={value} onChange={hendleChange} type="text" />
         <input className="form__btn" type="submit" />
       </form>

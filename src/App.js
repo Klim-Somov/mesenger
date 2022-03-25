@@ -4,7 +4,7 @@ import { Message } from "./components/message/Message";
 import { useEffect, useState } from "react";
 import Form from "./components/form/Form";
 
-// const name = "Klim ";
+
 const msgs = [];
 
 function App() {
