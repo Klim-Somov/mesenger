@@ -14,6 +14,8 @@ function App() {
 
 
 useEffect(() => {   
+
+
 lastAuthot !== 'BOT'? 
   setTimeout(() => {
     (setMessages([...messages, { text: "want to talk?", author: "BOT", id: Math.random()}])) 
@@ -29,8 +31,8 @@ let lastAuthot = (messages.slice(-1)).map(x => x.author).toString()
 
 
   
-  const addMessage = (newText) => {
-    setMessages([...messages, { text: newText, author: " Klim Somov", id: Math.random()  }]);
+  const addMessage = (text) => {
+    setMessages([...messages, { text, author: "Klim Somov", id: Math.random()  }]);
   };
 
   return (
