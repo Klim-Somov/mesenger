@@ -15,7 +15,7 @@ const timer1 = () => ( setTimeout(() => {(setMessages([...messages, { text: "wan
   lastAuthot !== 'BOT'? timer1() : console.log('Привет от бота')
   return () => clearTimeout(timer1)
   }, [messages])
-let lastAuthot = (messages.slice(-1)).map(x => x.author).toString()
+let lastAuthot =  messages[messages.length - 1]?.author
   const addMessage = (text) => {
     setMessages([...messages, { text, author: "Klim Somov", id: Math.random()  }]);
   };

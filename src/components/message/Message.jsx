@@ -5,7 +5,8 @@ export const Message = ({ author, text}) => {
     <div>
  
     <div className="message" >
-      <span className="purple-header" >{author}</span>
+      <span className="purple-header" >
+        {author}</span>
       <span>{text}</span>
     </div>
     </div>
