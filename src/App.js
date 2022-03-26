@@ -9,16 +9,25 @@ import Form from "./components/form/Form";
 
 function App() {
   const [messages, setMessages] = useState([]);
- 
-  useEffect(() => {
-      setTimeout(() => {
-      setMessages([...messages, { text: "want to talk?", author: " BOT", id: Math.random()}]);
-    }, 2000);
-    return () => {
-      console.log('ee')
-    }
+
   
-  }, [])
+
+
+useEffect(() => {   
+lastAuthot !== 'BOT'? 
+  setTimeout(() => {
+    (setMessages([...messages, { text: "want to talk?", author: "BOT", id: Math.random()}])) 
+  }, 1500)
+  : console.log('Привет от бота')
+  return () => {
+    clearTimeout()
+    }
+  }, [messages])
+
+let lastAuthot = (messages.slice(-1)).map(x => x.author).toString()
+
+
+
   
   const addMessage = (newText) => {
     setMessages([...messages, { text: newText, author: " Klim Somov", id: Math.random()  }]);
