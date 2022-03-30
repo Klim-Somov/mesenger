@@ -4,27 +4,44 @@ import { Message } from "./components/message/Message";
 import { useEffect, useState } from "react";
 import Form from "./components/form/Form";
 
-
-
+const human = "Me";
 
 function App() {
   const [messages, setMessages] = useState([]);
 
-useEffect(() => {   
-const timer1 = () => ( setTimeout(() => {(setMessages([...messages, { text: "want to talk?", author: "BOT", id: Math.random()}])) }, 1500))
-  lastAuthot !== 'BOT'? timer1() : console.log('Привет от бота')
-  return () => clearTimeout(timer1)
-  }, [messages])
-let lastAuthot =  messages[messages.length - 1]?.author
-  const addMessage = (text) => {
-    setMessages([...messages, { text, author: "Klim Somov", id: Math.random()  }]);
+  const addMessage = (newMsg) => {
+    setMessages([...messages, newMsg]);
   };
+  const sendMessages = (text) => {
+    addMessage({
+      author: human,
+      text,
+      id: Math.random(),
+    });
+  };
+  useEffect(() => {
+    let timeout;
+    if (messages[messages.length - 1]?.author === human) {
+      timeout = setTimeout(() => {
+        addMessage({
+          author: "BOT",
+          text: "want to talk?",
+          id: Math.random(),
+        });
+      }, 1500);
+    }
+    return () =>{
+      clearTimeout(timeout)
+    }
+  }, [messages]);
+
   return (
     <div className="App">
       <header className="App-header">
-        <Form onSubmit={addMessage} />
-        {messages.map((m) => (<Message key = {m.id} text={m.text} author={m.author}/>))}
-        
+        <Form onSubmit={sendMessages} />
+        {messages.map((m) => (
+          <Message key={m.id} text={m.text} author={m.author} />
+        ))}
       </header>
     </div>
   );
