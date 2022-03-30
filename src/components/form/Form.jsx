@@ -1,3 +1,4 @@
+import { Button, TextField } from "@mui/material";
 import {  useState } from "react";
 import "./Form.scss";
 export default function Form({onSubmit}) {
@@ -14,11 +15,12 @@ const hendleChange = (e) => {
     setValue(e.target.value) 
 }
   return (
-    <div>
+    
       <form className="form"  onSubmit={submitHendler} >
-        <input className="form__input" value={value} onChange={hendleChange} type="text" />
-        <input className="form__btn" type="submit" />
+        <TextField  className="myTextField" color="success" id="standard-basic" label="Введите сообщение" variant="standard" value={value} onChange={hendleChange}  />
+        <Button className="form__btn mybtn" variant="contained"  type="">submit</Button>
+        
       </form>
-    </div>
+    
   );
 }

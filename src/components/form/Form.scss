@@ -1,6 +1,7 @@
 .form {
   display: flex;
   gap: 15px;
+  align-items: center;
 
   &__input {
     background: #424b5f;
@@ -34,4 +35,13 @@
     font-weight: 700;
     font-size: 14px;
   }
+}
+.mybtn.MuiButton-root:hover {
+  background-color:  #65c178;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input { 
+    color: rgb(255, 255, 255) !important;
+}
+.css-1g048a3-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.42) !important;
 }
