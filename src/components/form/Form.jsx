@@ -17,7 +17,9 @@ const hendleChange = (e) => {
   return (
     
       <form className="form"  onSubmit={submitHendler} >
+
         <TextField  className="myTextField" id="standard-basic" label="Введите сообщение" variant="standard" value={value} onChange={hendleChange}  />
+        
         <Button className="form__btn mybtn" variant="contained"  type="">submit</Button>
         
       </form>
