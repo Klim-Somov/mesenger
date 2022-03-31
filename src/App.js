@@ -1,14 +1,14 @@
 import "./App.scss";
-import { Counter } from "./components/example/Example";
+// import { Counter } from "./components/example/Example";
 import { useEffect, useState, useRef } from "react";
 import Form from "./components/form/Form";
 import { Messages } from "./components/Messages/Messages";
 import { AUTHORS } from "./utils/constants";
-
+import { Chats } from "./components/Chats/Chats";
 function App() {
   const [messages, setMessages] = useState([]);
   const timeout = useRef();
-  const wrapperRef = useRef()
+  const wrapperRef = useRef();
   const addMessage = (newMsg) => {
     setMessages([...messages, newMsg]);
   };
@@ -34,19 +34,19 @@ function App() {
     };
   }, [messages]);
 
-  const hendlerScroll = () => {
-    wrapperRef.current?.scrollTo({x: 0, y: 0})
-  }
-
   return (
     <div className="App" ref={wrapperRef}>
       <header className="App-header">
-        <Form onSubmit={sendMessages} />
-        <Messages messages={messages} />
-        
+        <div>
+          
+          <  Chats />
+        </div>
+        <div>
+          <Form onSubmit={sendMessages} />
+          <Messages messages={messages} />
+        </div>
       </header>
     </div>
   );
 }
-
 export default App;
