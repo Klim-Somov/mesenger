@@ -1,5 +1,4 @@
 .form {
- 
   display: flex;
   gap: 15px;
   align-items: center;
@@ -38,16 +37,15 @@
   }
 }
 .mybtn.MuiButton-root:hover {
-  background-color:  #65c178;
+  background-color: #65c178;
 }
-.css-1x51dt5-MuiInputBase-input-MuiInput-input { 
-    color: rgb(255, 255, 255) !important;
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  color: rgb(255, 255, 255) !important;
 }
-.css-1g048a3-MuiInputBase-root-MuiInput-root:before {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.42) !important;
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 1px solid rgba(235, 235, 235, 0.42) !important;
 }
 .form-content {
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,6 +55,4 @@
   position: absolute;
   bottom: 6%;
   right: 10%;
-
-
 }

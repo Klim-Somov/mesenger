@@ -38,13 +38,17 @@ function App() {
     <div className="App" ref={wrapperRef}>
       <header className="App-header">
         <div>
-          <  Chats />
+          <Chats />
         </div>
         <div className="form-content">
-        <div><Messages messages={messages} /></div>
-        <div className="input-messages" >  <Form onSubmit={sendMessages} /></div>
+          <div>
+            <Messages messages={messages} />
+          </div>
+          <div className="input-messages">
+            {" "}
+            <Form onSubmit={sendMessages} />
+          </div>
         </div>
-        
       </header>
     </div>
   );

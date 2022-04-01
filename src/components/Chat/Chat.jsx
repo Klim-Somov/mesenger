@@ -13,7 +13,7 @@ export const Chat = ({ name, lstMsg }) => {
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "transparent" }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={name} src="/static/images/avatar/1.jpg" />
+            <Avatar alt={name} src="../images/avatar/{avatar}" />
           </ListItemAvatar>
           <ListItemText
             primary={lstMsg}
