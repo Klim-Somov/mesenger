@@ -1,7 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import "./Form.scss";
-export default function Form({ onSubmit }) {
+
+
+export  function Form({ onSubmit }) {
   const [value, setValue] = useState("");
 
   const submitHendler = (e) => {
