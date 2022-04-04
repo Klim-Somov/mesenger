@@ -12,7 +12,7 @@ function App() {
         <ul className="nav__list">
           <li>
             <NavLink
-              style={({ isActive }) => ({ color: isActive ? "green" : "blue" })}
+              style={({ isActive }) => ({ color: isActive ? "blue" : "white"})}
               to="/profile"
             >
               Profile
@@ -20,7 +20,7 @@ function App() {
           </li>
           <li>
             <NavLink
-              style={({ isActive }) => ({ color: isActive ? "green" : "blue" })}
+              style={({ isActive }) => ({ color: isActive ? "blue" : "white" })}
               to="/conversation"
             >
               Chat
@@ -37,5 +37,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

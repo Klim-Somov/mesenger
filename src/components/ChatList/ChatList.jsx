@@ -6,17 +6,17 @@ const chats = [
   {
     name: "Таня",
     lstMsg: "Brunch this weekend?",
-    id: 1,
+    id: "chat1",
   },
   {
     name: "Дедушка",
     lstMsg: "Wish I could come, but I'm out of town this…",
-    id: 2,
+    id: "chat2",
   },
   {
     name: "Вадим",
     lstMsg: "Do you have Paris recommendations? Have you ever…'",
-    id: 3,
+    id: "chat3",
   },
 ];
 
