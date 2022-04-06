@@ -1,0 +1,23 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.chatList {
+  background-color: #427e6c;
+}
+.css-10hburv-MuiTypography-root {
+  color: aliceblue;
+}
+.del-btn {
+  background: transparent;
+  border: none;
+  color: rgb(255, 255, 255);
+  svg {
+    font-size: 1.8rem }
+}
+.chatList {
+  display: flex;
+  justify-content: space-between;
+  max-width: 35%;
+  align-items: center;
+}

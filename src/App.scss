@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  padding: 0 30px;
+  background-color: #427e6c;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.nav {
+  position: relative;
+  border: 4px solid rgba(67, 122, 177, 0.333);
+  padding: 20px;
+  background-color: rgb(146, 218, 157);
+&__list {
+  display: flex;
+  gap: 40px;
+}
+}
+
+* {
+  margin: 0 ;
+}
+li {
+  list-style: none;
+}
+body {
+  background-color: #427e6c;
+  min-height: 100vh;
+}
