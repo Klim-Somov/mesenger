@@ -23,6 +23,12 @@ const data = [
     id: "chat3",
     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-zqIliPz-WGwVfQJQZZUy5XXAudS0qxAg&usqp=CAU"
   },
+  {
+    name: "Арсен",
+    lstMsg: "ok",
+    id: "chat4",
+    avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg"
+  },
 ];
 
 export function ChatList() {
