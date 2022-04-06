@@ -12,7 +12,7 @@ function App() {
         <ul className="nav__list">
           <li>
             <NavLink
-              style={({ isActive }) => ({ color: isActive ? "blue" : "white"})}
+              style={({ isActive }) => ({ color: isActive ? "blue" : "white" })}
               to="/profile"
             >
               Profile

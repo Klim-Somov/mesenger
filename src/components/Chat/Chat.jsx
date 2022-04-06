@@ -8,13 +8,9 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import "./chat.scss";
 
-
-
-
-
-export const Chat = ({delChat, name, lstMsg, id }) => {
+export const Chat = ({ delChat, name, lstMsg, id }) => {
   return (
-   <div className="chat">
+    <div className="chat">
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "transparent" }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
@@ -36,7 +32,6 @@ export const Chat = ({delChat, name, lstMsg, id }) => {
           <Divider variant="inset" />
         </ListItem>
       </List>
-        
-   </div>
+    </div>
   );
 };

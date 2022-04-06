@@ -9,11 +9,19 @@ a {
   color: aliceblue;
 }
 .del-btn {
+  cursor: pointer;
   background: transparent;
   border: none;
   color: rgb(255, 255, 255);
+  transition: all .6s;
   svg {
-    font-size: 1.8rem }
+    font-size: 1.8rem;
+  }
+  @media (any-hover: hover) {
+    &:hover {
+      color: rgb(255, 0, 0);
+    }
+  }
 }
 .chatList {
   display: flex;
