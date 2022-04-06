@@ -30,7 +30,7 @@ const initMessages = {
 };
 export function Conversation() {
   const { id } = useParams();
-  console.log(id);
+
   const [messages, setMessages] = useState(initMessages);
 
   const timeout = useRef();

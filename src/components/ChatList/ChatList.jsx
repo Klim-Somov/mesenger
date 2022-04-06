@@ -1,6 +1,7 @@
 import "./ChatList.scss";
 import { Chat } from "../Chat/Chat";
 import { NavLink, Outlet } from "react-router-dom";
+import  DeleteForeverSharpIcon  from "@mui/icons-material/DeleteForeverSharp";
 
 const chats = [
   {
@@ -20,19 +21,25 @@ const chats = [
   },
 ];
 
-const delChat = (e) => {
-  console.log(e.target);
+const delChat = (id) => {
+  console.log(id);
 };
 
 export const ChatList = () => (
   <>
-    <div className="chatList">
+    <div>
       {chats.map((chat) => (
-        <div key={chat.id}>
+        <div 
+        className="chatList"
+        key={chat.id}>
           <NavLink key={chat.id} to={`/conversation/${chat.id}`}>
-            <Chat delChat = {delChat} id={chat.id} name={chat.name} lstMsg={chat.lstMsg} />
+            <Chat delChat   id={chat.id} name={chat.name} lstMsg={chat.lstMsg} />
           </NavLink>
-          
+          <button 
+         onClick={delChat(chat.id)}
+         className="del-btn">
+         <DeleteForeverSharpIcon />
+       </button>
         </div>
       ))}
     </div>

@@ -6,7 +6,6 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import  DeleteForeverSharpIcon  from "@mui/icons-material/DeleteForeverSharp";
 import "./chat.scss";
 
 
@@ -37,11 +36,7 @@ export const Chat = ({delChat, name, lstMsg, id }) => {
           <Divider variant="inset" />
         </ListItem>
       </List>
-         <button 
-         onClick={delChat}
-         className="del-btn">
-         <DeleteForeverSharpIcon />
-       </button>
+        
    </div>
   );
 };
