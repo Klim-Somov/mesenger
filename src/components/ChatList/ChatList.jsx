@@ -20,13 +20,20 @@ const chats = [
   },
 ];
 
+const delChat = (e) => {
+  console.log(e.target);
+};
+
 export const ChatList = () => (
   <>
     <div className="chatList">
       {chats.map((chat) => (
-        <NavLink key={chat.id} to={`/conversation/${chat.id}`}>
-          <Chat name={chat.name} lstMsg={chat.lstMsg} />
-        </NavLink>
+        <div key={chat.id}>
+          <NavLink key={chat.id} to={`/conversation/${chat.id}`}>
+            <Chat delChat = {delChat} id={chat.id} name={chat.name} lstMsg={chat.lstMsg} />
+          </NavLink>
+          
+        </div>
       ))}
     </div>
     <Outlet />

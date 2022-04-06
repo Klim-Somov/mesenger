@@ -6,10 +6,16 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
+import  DeleteForeverSharpIcon  from "@mui/icons-material/DeleteForeverSharp";
+import "./chat.scss";
 
-export const Chat = ({ name, lstMsg }) => {
+
+
+
+
+export const Chat = ({delChat, name, lstMsg, id }) => {
   return (
-    
+   <div className="chat">
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "transparent" }}>
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
@@ -28,9 +34,14 @@ export const Chat = ({ name, lstMsg }) => {
               </React.Fragment>
             }
           />
-          <Divider variant="inset"  />
+          <Divider variant="inset" />
         </ListItem>
       </List>
-   
+         <button 
+         onClick={delChat}
+         className="del-btn">
+         <DeleteForeverSharpIcon />
+       </button>
+   </div>
   );
 };
