@@ -24,7 +24,7 @@ export  function Form({ onSubmit }) {
         variant="standard"
         value={value}
         onChange={hendleChange}
-        InputLabelProps={{ sx: {color: 'white' } }}
+        InputLabelProps={{ sx: {color: 'black' } }}
       />
 
       <Button className="form__btn mybtn" variant="contained" type="">

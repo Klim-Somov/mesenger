@@ -9,7 +9,7 @@
     padding-right: 15px;
     border: 0;
     border-radius: 5px;
-    color: #a7b3cb;
+    color: #000000;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
@@ -39,11 +39,9 @@
 .mybtn.MuiButton-root:hover {
   background-color: #65c178;
 }
-.css-1x51dt5-MuiInputBase-input-MuiInput-input {
-  color: rgb(255, 255, 255) !important;
-}
+
 .css-1480iag-MuiInputBase-root-MuiInput-root:before {
-  border-bottom: 1px solid rgba(235, 235, 235, 0.42) !important;
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
 }
 .form-content {
   display: flex;
