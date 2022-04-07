@@ -9,11 +9,13 @@ import { Button } from "@mui/material";
 
 function App() {
   const [theme, setTheme] = useState("dark");
+  const girlColor = " rgba(26, 144, 255, 0.698)";
+  const boyColor = "rgba(255, 26, 236, 0.698)";
   return (
     <ThemeContext.Provider value={theme}>
       <BrowserRouter>
         <div
-        style={{backgroundColor: theme === "dark" ? "rgba(255, 26, 236, 0.698)" : " rgba(26, 144, 255, 0.698)" }}
+        style={{backgroundColor: theme === "dark" ? boyColor : girlColor }}
         className="nav">
           <ul className="nav__list">
             <li>
