@@ -1,6 +1,8 @@
+
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import "./Form.scss";
+import SendIcon from '@mui/icons-material/Send';
 
 
 export  function Form({ onSubmit }) {
@@ -26,9 +28,9 @@ export  function Form({ onSubmit }) {
         onChange={hendleChange}
         InputLabelProps={{ sx: {color: 'black' } }}
       />
-
-      <Button className="form__btn mybtn" variant="contained" type="">
-        submit
+  
+      <Button className="form__btn mybtn" variant="contained" endIcon={<SendIcon />} type="">
+        Send
       </Button>
     </form>
   );
