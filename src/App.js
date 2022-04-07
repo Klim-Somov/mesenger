@@ -6,6 +6,7 @@ import { Profile } from "./components/Profile/Profile";
 import { ChatList } from "./components/ChatList/ChatList";
 import { ThemeContext } from "./utils/ThemeContext";
 import { Button } from "@mui/material";
+import Switch from "@mui/material/Switch";
 
 function App() {
   const [theme, setTheme] = useState("dark");
@@ -15,8 +16,9 @@ function App() {
     <ThemeContext.Provider value={theme}>
       <BrowserRouter>
         <div
-        style={{backgroundColor: theme === "dark" ? boyColor : girlColor }}
-        className="nav">
+          style={{ backgroundColor: theme === "dark" ? boyColor : girlColor }}
+          className="nav"
+        >
           <ul className="nav__list">
             <li>
               <NavLink
@@ -39,19 +41,15 @@ function App() {
               </NavLink>
             </li>
           </ul>
-          <Button
-          size="small"
-          variant="contained"
-            onClick={() =>
-              setTheme((prevTheme) =>
-                prevTheme === "dark"
-                  ? "light"
-                  : "dark"
-              )
+         
+          <Switch
+          
+            onChange={() =>
+              setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
             }
-          >
-            Theme
-          </Button>
+            name="theme"
+            color="primary"
+          />
         </div>
         <Routes>
           <Route path="/profile" element={<Profile />} />
