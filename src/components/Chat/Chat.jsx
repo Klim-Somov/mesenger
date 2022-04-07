@@ -6,19 +6,27 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { deepOrange, deepPurple } from '@mui/material/colors';
-
+import { deepPurple } from "@mui/material/colors";
 
 import "./chat.scss";
 
 export const Chat = ({ avatar, name, lstMsg }) => {
-  console.log(avatar)
+  console.log(avatar);
   return (
     <div className="chat">
-      <List sx={{ width: "100%", height: 90, maxWidth: 360, minWidth: 360, bgcolor: "transparent", color: "black"  }}>
+      <List
+        sx={{
+          width: "100%",
+          height: 90,
+          maxWidth: 360,
+          minWidth: 360,
+          bgcolor: "transparent",
+          color: "black",
+        }}
+      >
         <ListItem alignItems="flex-start">
           <ListItemAvatar>
-            <Avatar alt={name} src={avatar} sx={{ bgcolor: deepPurple[500]}}/>
+            <Avatar alt={name} src={avatar} sx={{ bgcolor: deepPurple[500] }} />
           </ListItemAvatar>
           <ListItemText
             primary={lstMsg}

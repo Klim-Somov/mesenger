@@ -1,7 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router";
-
-import { ChatList } from "../../components/ChatList/ChatList";
+import { useEffect,useRef, useState } from "react";
+import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
 import { AUTHORS } from "../../utils/constants";
@@ -27,6 +25,7 @@ const initMessages = {
   chat1: [],
   chat2: [],
   chat3: [],
+  chat4: [],
 };
 export function Conversation() {
   const { id } = useParams();

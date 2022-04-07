@@ -15,34 +15,36 @@
 
 .App-header {
   padding: 0 30px;
- 
+
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: calc(10px + 2vmin);
-  
 }
 
 .nav {
-  background-color: rgba(26, 144, 255, 0.698);
+  transition: all 0.4s;
+  background-color: rgba(255, 26, 236, 0.698);
   position: relative;
   padding: 20px;
- 
-&__list {
   display: flex;
-  gap: 40px;
-}
+  align-items: center;
+
+  &__list {
+    display: flex;
+    gap: 40px;
+    flex: 1 1 auto;
+  }
 }
 
 * {
-  margin: 0 ;
+  margin: 0;
 }
 li {
   list-style: none;
 }
 body {
-  color:rgb(52, 40, 40);
- 
+  color: rgb(52, 40, 40);
   min-height: 100vh;
 }
