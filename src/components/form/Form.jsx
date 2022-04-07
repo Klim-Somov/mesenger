@@ -1,12 +1,14 @@
 
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./Form.scss";
 import SendIcon from '@mui/icons-material/Send';
+import { ThemeContext } from "../../utils/ThemeContext";
 
 
 export  function Form({ onSubmit }) {
   const [value, setValue] = useState("");
+  const {changeTheme} = useContext(ThemeContext)
 
   const submitHendler = (e) => {
     e.preventDefault();
@@ -29,9 +31,14 @@ export  function Form({ onSubmit }) {
         InputLabelProps={{ sx: {color: 'black' } }}
       />
   
-      <Button className="form__btn mybtn" variant="contained" endIcon={<SendIcon />} type="">
+      <Button 
+      className="form__btn mybtn" variant="contained" endIcon={<SendIcon />} type="">
         Send
       </Button>
+      <Button
+      onClick={changeTheme}
+      >useContextTest</Button>
     </form>
+    
   );
 }

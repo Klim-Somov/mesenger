@@ -12,8 +12,10 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const girlColor = " rgba(26, 144, 255, 0.698)";
   const boyColor = "rgba(255, 26, 236, 0.698)";
+
+  const toggleTheme = () => (setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark")));
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={{theme: theme, changeTheme: toggleTheme}}>
       <BrowserRouter>
         <div
           style={{ backgroundColor: theme === "dark" ? boyColor : girlColor }}
@@ -27,7 +29,7 @@ function App() {
                 })}
                 to="/profile"
               >
-                Profile
+                PROFILE
               </NavLink>
             </li>
             <li>
@@ -37,7 +39,7 @@ function App() {
                 })}
                 to="/conversation"
               >
-                Chat
+                CHAT
               </NavLink>
             </li>
           </ul>
