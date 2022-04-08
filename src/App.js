@@ -9,15 +9,49 @@ import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { store } from "./store";
 
+const initialChats = [
+  {
+    name: "Таня",
+    lstMsg: "Brunch this weekend?",
+    id: "chat1",
+    avatar:
+      "https://images.androeed.ru/icons/2022/02/14/ico-ninja-turtles-legends-1644870122.webp",
+  },
+  {
+    name: "Дедушка",
+    lstMsg: "Wish I could come, but I'm out of town this…",
+    id: "chat2",
+    avatar:
+      "https://ic.pics.livejournal.com/tanjand/44781189/99899304/99899304_original.jpg",
+  },
+  {
+    name: "Вадим",
+    lstMsg: "Do you have Paris recommendations? Have you ever…'",
+    id: "chat3",
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-zqIliPz-WGwVfQJQZZUy5XXAudS0qxAg&usqp=CAU",
+  },
+  {
+    name: "Арсен",
+    lstMsg: "ok",
+    id: "chat4",
+    avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg",
+  },
+];
+const initMessages = initialChats.reduce((acc, chat) => {
+  acc[chat.id] = [];
+  return acc;
+},{});
+
 function App() {
-  const [theme, setTheme] = useState("dark");
   const girlColor = " rgba(26, 144, 255, 0.698)";
   const boyColor = "rgba(255, 26, 236, 0.698)";
 
+  const [theme, setTheme] = useState("dark");
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   return (
-   <Provider store={store}>
+    <Provider store={store}>
       <ThemeContext.Provider value={{ theme: theme, changeTheme: toggleTheme }}>
         <BrowserRouter>
           <div
@@ -46,10 +80,12 @@ function App() {
                 </NavLink>
               </li>
             </ul>
-  
+
             <Switch
               onChange={() =>
-                setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
+                setTheme((prevTheme) =>
+                  prevTheme === "dark" ? "light" : "dark"
+                )
               }
               name="theme"
               color="primary"
@@ -57,13 +93,16 @@ function App() {
           </div>
           <Routes>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/conversation" element={<ChatList />}>
-              <Route path=":id" element={<Conversation />} />
+            <Route
+              path="/conversation"
+              element={<ChatList data={initialChats} />}
+            >
+              <Route path=":id" element={<Conversation initMessages={initMessages} />} />
             </Route>
           </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>
-   </Provider>
+    </Provider>
   );
 }
 export default App;

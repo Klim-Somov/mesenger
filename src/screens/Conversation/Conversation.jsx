@@ -4,30 +4,9 @@ import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
 import { AUTHORS } from "../../utils/constants";
 
-// const chats = [
-//   {
-//     name: "Таня",
-//     lstMsg: "Brunch this weekend?",
-//     id: 1,
-//   },
-//   {
-//     name: "Дедушка",
-//     lstMsg: "Wish I could come, but I'm out of town this…",
-//     id: 2,
-//   },
-//   {
-//     name: "Вадим",
-//     lstMsg: "Do you have Paris recommendations? Have you ever…'",
-//     id: 3,
-//   },
-// ];
-const initMessages = {
-  chat1: [],
-  chat2: [],
-  chat3: [],
-  chat4: [],
-};
-export function Conversation() {
+
+
+export function Conversation({initMessages}) {
   const { id } = useParams();
 
   const [messages, setMessages] = useState(initMessages);

@@ -8,7 +8,7 @@ import { toggleCheckbox } from "../../store/profile/actions";
 export function Profile() {
   const dispatch = useDispatch()
   const state = useSelector((state) => state);
-  console.log(state)
+
   const hendleClick = () => {
     dispatch(toggleCheckbox)
   }
