@@ -11,7 +11,6 @@ import { deepPurple } from "@mui/material/colors";
 import "./chat.scss";
 
 export const Chat = ({ avatar, name, lstMsg }) => {
-  console.log(avatar);
   return (
     <div className="chat">
       <List
