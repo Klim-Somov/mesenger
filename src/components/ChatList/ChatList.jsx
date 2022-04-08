@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import "./ChatList.scss";
 import { Chat } from "../Chat/Chat";
@@ -6,14 +5,10 @@ import DeleteForeverSharpIcon from "@mui/icons-material/DeleteForeverSharp";
 
 
 
-export function ChatList({data}) {
-  const [chats, setСhats] = useState(data);
+export function ChatList({chats, hendlDel}) {
+  
 
-  const hendlDel = (id) => {
-    if (window.confirm("Are you sure you want to delete?")) {
-      setСhats(chats.filter((chat) => chat.id !== id));
-    }
-  };
+  
   return (
     <>
       <div>

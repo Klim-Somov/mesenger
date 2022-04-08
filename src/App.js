@@ -38,16 +38,32 @@ const initialChats = [
     avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg",
   },
 ];
+
 const initMessages = initialChats.reduce((acc, chat) => {
   acc[chat.id] = [];
   return acc;
-},{});
+}, {});
 
 function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
   const boyColor = "rgba(255, 26, 236, 0.698)";
 
+  const [chats, setСhats] = useState(initialChats);
+
+  const [messages, setMessages] = useState(initMessages);
+
   const [theme, setTheme] = useState("dark");
+
+  const addMessage = (newMsg, id) => {
+    setMessages({ ...messages, [id]: [...messages[id], newMsg] });
+  };
+
+  const hendlDel = (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      setСhats(chats.filter((chat) => chat.id !== id));
+    }
+  };
+
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   return (
@@ -95,9 +111,14 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route
               path="/conversation"
-              element={<ChatList data={initialChats} />}
+              element={<ChatList chats={chats} hendlDel={hendlDel} />}
             >
-              <Route path=":id" element={<Conversation initMessages={initMessages} />} />
+              <Route
+                path=":id"
+                element={
+                  <Conversation messages={messages} addMessage={addMessage} />
+                }
+              />
             </Route>
           </Routes>
         </BrowserRouter>

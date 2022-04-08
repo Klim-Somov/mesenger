@@ -4,37 +4,35 @@ import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
 import { AUTHORS } from "../../utils/constants";
 
-
-
-export function Conversation({initMessages}) {
+export function Conversation({ messages, addMessage }) {
   const { id } = useParams();
-
-  const [messages, setMessages] = useState(initMessages);
 
   const timeout = useRef();
   const wrapperRef = useRef();
 
-  const addMessage = (newMsg) => {
-    setMessages({ ...messages, [id]: [...messages[id], newMsg] });
-  };
-
   const sendMessages = (text) => {
-    addMessage({
-      author: AUTHORS.human,
-      text,
-      id: Date.now(),
-    });
+    addMessage(
+      {
+        author: AUTHORS.human,
+        text,
+        id: Date.now(),
+      },
+      id
+    );
   };
 
   useEffect(() => {
     const lastMessage = messages[id]?.[messages[id]?.length - 1];
     if (lastMessage?.author === AUTHORS.human) {
       timeout.current = setTimeout(() => {
-        addMessage({
-          author: AUTHORS.robot,
-          text: "want to talk?",
-          id: Date.now(),
-        });
+        addMessage(
+          {
+            author: AUTHORS.robot,
+            text: "want to talk?",
+            id: Date.now(),
+          },
+          id
+        );
       }, 1200);
     }
     return () => {
