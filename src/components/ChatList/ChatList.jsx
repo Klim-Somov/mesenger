@@ -2,13 +2,18 @@ import { NavLink, Outlet } from "react-router-dom";
 import "./ChatList.scss";
 import { Chat } from "../Chat/Chat";
 import DeleteForeverSharpIcon from "@mui/icons-material/DeleteForeverSharp";
+import { Form } from "../Form/Form";
 
-
-
-export function ChatList({chats, hendlDel}) {
-  
-
-  
+export function ChatList({ chats, hendlDel, addChat }) {
+  const hendlSubmit = (newChatName) => {
+    const newChat = {
+      name: newChatName,
+      lstMsg: "",
+      id: `chat${Date.now()}`,
+      avatar: null,
+    };
+    addChat(newChat);
+  };
   return (
     <>
       <div>
@@ -28,6 +33,8 @@ export function ChatList({chats, hendlDel}) {
           </div>
         ))}
       </div>
+      
+      <Form onSubmit={hendlSubmit}/>
       <Outlet />
     </>
   );

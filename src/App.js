@@ -61,7 +61,16 @@ function App() {
   const hendlDel = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       setСhats(chats.filter((chat) => chat.id !== id));
+      setMessages((prevMessages) => {
+        const newMessages = { ...prevMessages };
+        delete newMessages[id];
+
+        return newMessages;
+      });
     }
+  };
+  const addChat = (newChat) => {
+    setСhats((prevChats) => [...prevChats, newChat]);
   };
 
   const toggleTheme = () =>
@@ -111,7 +120,9 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route
               path="/conversation"
-              element={<ChatList chats={chats} hendlDel={hendlDel} />}
+              element={
+                <ChatList chats={chats} hendlDel={hendlDel} addChat={addChat} />
+              }
             >
               <Route
                 path=":id"
