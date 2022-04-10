@@ -8,7 +8,7 @@ import { Form } from "../../components/Form/Form";
 
 export function Profile() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  const state = useSelector((state) => state.profile);
 
   const hendleClick = () => {
     dispatch(toggleCheckbox);

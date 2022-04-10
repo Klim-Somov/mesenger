@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Provider } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import "./App.scss";
 import { Conversation } from "./screens/Conversation/Conversation";
@@ -8,6 +8,7 @@ import { ChatList } from "./components/ChatList/ChatList";
 import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { store } from "./store";
+import { addChat, deleteChat  } from "./store/conversation/actions";
 
 const initialChats = [
   {
@@ -48,7 +49,10 @@ function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
   const boyColor = "rgba(255, 26, 236, 0.698)";
 
-  const [chats, setСhats] = useState(initialChats);
+  // const [chats, setСhats] = useState(initialChats);
+
+  const chats = useSelector((state) => state.chats);
+  const dispatch = useDispatch();
 
   const [messages, setMessages] = useState(initMessages);
 
@@ -60,7 +64,8 @@ function App() {
 
   const hendlDel = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
-      setСhats(chats.filter((chat) => chat.id !== id));
+      // setСhats(chats.filter((chat) => chat.id !== id));
+      dispatch(deleteChat(id))
       setMessages((prevMessages) => {
         const newMessages = { ...prevMessages };
         delete newMessages[id];
@@ -69,14 +74,14 @@ function App() {
       });
     }
   };
-  const addChat = (newChat) => {
-    setСhats((prevChats) => [...prevChats, newChat]);
+  const addConversation = (newChat) => {
+    dispatch(addChat(newChat));
   };
 
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+
   return (
-    <Provider store={store}>
       <ThemeContext.Provider value={{ theme: theme, changeTheme: toggleTheme }}>
         <BrowserRouter>
           <div
@@ -121,7 +126,7 @@ function App() {
             <Route
               path="/conversation"
               element={
-                <ChatList chats={chats} hendlDel={hendlDel} addChat={addChat} />
+                <ChatList chats={chats} hendlDel={hendlDel} addChat={addConversation} />
               }
             >
               <Route
@@ -134,7 +139,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>
-    </Provider>
+    
   );
 }
 export default App;
