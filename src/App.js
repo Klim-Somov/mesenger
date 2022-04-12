@@ -8,43 +8,9 @@ import { ChatList } from "./components/ChatList/ChatList";
 import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { store } from "./store";
-import { addChat, deleteChat  } from "./store/conversation/actions";
+import { addChat, deleteChat } from "./store/conversation/actions";
 import { selectShats } from "./store/conversation/selectors";
 
-const initialChats = [
-  {
-    name: "Таня",
-    lstMsg: "Brunch this weekend?",
-    id: "chat1",
-    avatar:
-      "https://images.androeed.ru/icons/2022/02/14/ico-ninja-turtles-legends-1644870122.webp",
-  },
-  {
-    name: "Дедушка",
-    lstMsg: "Wish I could come, but I'm out of town this…",
-    id: "chat2",
-    avatar:
-      "https://ic.pics.livejournal.com/tanjand/44781189/99899304/99899304_original.jpg",
-  },
-  {
-    name: "Вадим",
-    lstMsg: "Do you have Paris recommendations? Have you ever…'",
-    id: "chat3",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-zqIliPz-WGwVfQJQZZUy5XXAudS0qxAg&usqp=CAU",
-  },
-  {
-    name: "Арсен",
-    lstMsg: "ok",
-    id: "chat4",
-    avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg",
-  },
-];
-
-const initMessages = initialChats.reduce((acc, chat) => {
-  acc[chat.id] = [];
-  return acc;
-}, {});
 
 function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
@@ -54,6 +20,11 @@ function App() {
 
   const chats = useSelector(selectShats);
   const dispatch = useDispatch();
+
+  const initMessages = chats.reduce((acc, chat) => {
+    acc[chat.id] = [];
+    return acc;
+  }, {});
 
   const [messages, setMessages] = useState(initMessages);
 
@@ -66,7 +37,7 @@ function App() {
   const hendlDel = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       // setСhats(chats.filter((chat) => chat.id !== id));
-      dispatch(deleteChat(id))
+      dispatch(deleteChat(id));
       setMessages((prevMessages) => {
         const newMessages = { ...prevMessages };
         delete newMessages[id];
@@ -83,64 +54,65 @@ function App() {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
 
   return (
-      <ThemeContext.Provider value={{ theme: theme, changeTheme: toggleTheme }}>
-        <BrowserRouter>
-          <div
-            style={{ backgroundColor: theme === "dark" ? boyColor : girlColor }}
-            className="nav"
-          >
-            <ul className="nav__list">
-              <li>
-                <NavLink
-                  style={({ isActive }) => ({
-                    color: isActive ? "black" : "white",
-                  })}
-                  to="/profile"
-                >
-                  PROFILE
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  style={({ isActive }) => ({
-                    color: isActive ? "black" : "white",
-                  })}
-                  to="/conversation"
-                >
-                  CHAT
-                </NavLink>
-              </li>
-            </ul>
+    <ThemeContext.Provider value={{ theme: theme, changeTheme: toggleTheme }}>
+      <BrowserRouter>
+        <div
+          style={{ backgroundColor: theme === "dark" ? boyColor : girlColor }}
+          className="nav"
+        >
+          <ul className="nav__list">
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "black" : "white",
+                })}
+                to="/profile"
+              >
+                PROFILE
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "black" : "white",
+                })}
+                to="/conversation"
+              >
+                CHAT
+              </NavLink>
+            </li>
+          </ul>
 
-            <Switch
-              onChange={() =>
-                setTheme((prevTheme) =>
-                  prevTheme === "dark" ? "light" : "dark"
-                )
-              }
-              name="theme"
-              color="primary"
-            />
-          </div>
-          <Routes>
-            <Route path="/profile" element={<Profile />} />
-            <Route
-              path="/conversation"
-              element={
-                <ChatList chats={chats} hendlDel={hendlDel} addChat={addConversation} />
-              }
-            >
-              <Route
-                path=":id"
-                element={
-                  <Conversation messages={messages} addMessage={addMessage} />
-                }
+          <Switch
+            onChange={() =>
+              setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"))
+            }
+            name="theme"
+            color="primary"
+          />
+        </div>
+        <Routes>
+          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/conversation"
+            element={
+              <ChatList
+                chats={chats}
+                hendlDel={hendlDel}
+                addChat={addConversation}
               />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ThemeContext.Provider>
-    
+            }
+          >
+            <Route
+              path=":id"
+              element={
+                <Conversation messages={messages} addMessage={addMessage} />
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeContext.Provider>
   );
 }
 export default App;
