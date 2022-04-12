@@ -5,20 +5,21 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import { setName, toggleCheckbox } from "../../store/profile/actions";
 import { Form } from "../../components/Form/Form";
+import { selectName, selectShowName } from "../../store/profile/selectors";
 
 export function Profile() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.profile);
+  const name = useSelector(selectName);
+  const showName = useSelector(selectShowName);
 
   const hendleClick = () => {
     dispatch(toggleCheckbox);
- }
-    const hendleSubmit = (text) => {
-      dispatch(setName(text))
-   
+  };
+  const hendleSubmit = (text) => {
+    dispatch(setName(text));
   };
   return (
-    <div
+    <div 
       style={{
         gap: 25,
         display: "flex",
@@ -35,8 +36,9 @@ export function Profile() {
         icon={<FavoriteBorder />}
         checkedIcon={<Favorite />}
       />
-      {state.showName && <span>{state.name}</span>}
-      <Form onSubmit={hendleSubmit}/>
+      
+      {showName && <span>{name}</span>}
+      <Form onSubmit={hendleSubmit} />
     </div>
   );
 }

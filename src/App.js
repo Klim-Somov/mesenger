@@ -9,6 +9,7 @@ import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { store } from "./store";
 import { addChat, deleteChat  } from "./store/conversation/actions";
+import { selectShats } from "./store/conversation/selectors";
 
 const initialChats = [
   {
@@ -51,7 +52,7 @@ function App() {
 
   // const [chats, setСhats] = useState(initialChats);
 
-  const chats = useSelector((state) => state.chats);
+  const chats = useSelector(selectShats);
   const dispatch = useDispatch();
 
   const [messages, setMessages] = useState(initMessages);
