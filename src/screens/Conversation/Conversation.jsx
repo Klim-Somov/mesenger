@@ -1,16 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
 import { addMessage } from "../../store/mesages/actions";
-import { selectMessages } from "../../store/mesages/selectors";
+import { selectMessagesByChatId } from "../../store/mesages/selectors";
 import { AUTHORS } from "../../utils/constants";
 
 export function Conversation() {
   const { id } = useParams();
-  const messages = useSelector(selectMessages);
+
+  const getMessages = useMemo(() => selectMessagesByChatId(id), [id]);
+  const messages = useSelector(getMessages);
   const dispatch = useDispatch();
+
   const timeout = useRef();
   const wrapperRef = useRef();
 
@@ -28,7 +31,7 @@ export function Conversation() {
   };
 
   useEffect(() => {
-    const lastMessage = messages[id]?.[messages[id]?.length - 1];
+    const lastMessage = messages?.[messages?.length - 1];
     if (lastMessage?.author === AUTHORS.human) {
       timeout.current = setTimeout(() => {
         dispatch(
@@ -47,7 +50,7 @@ export function Conversation() {
       clearTimeout(timeout.current);
     };
   }, [messages]);
-  if (!messages[id]) {
+  if (!messages) {
     return <Navigate to="/conversation" replace />;
   }
 
@@ -59,7 +62,7 @@ export function Conversation() {
             <Form onSubmit={sendMessages} />
           </div>
           <div>
-            <Messages messages={messages[id]} />
+            <Messages messages={messages} />
           </div>
         </div>
       </header>
