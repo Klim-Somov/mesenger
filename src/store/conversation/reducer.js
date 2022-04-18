@@ -24,7 +24,7 @@ const initialState = [
   },
   {
     name: "Арсен",
-    lstMsg: "ok",
+    lstMsg: "okик",
     id: "chat4",
     avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg",
   },
