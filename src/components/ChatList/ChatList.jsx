@@ -3,8 +3,14 @@ import "./ChatList.scss";
 import { Chat } from "../Chat/Chat";
 import DeleteForeverSharpIcon from "@mui/icons-material/DeleteForeverSharp";
 import { Form } from "../Form/Form";
+import { useDispatch, useSelector } from "react-redux";
+import { selectChats } from "../../store/conversation/selectors";
+import { addChat, deleteChat } from "../../store/conversation/actions";
+import { clearMessages } from "../../store/mesages/actions";
 
-export function ChatList({ chats, hendlDel, addChat }) {
+export function ChatList() {
+  const chats = useSelector(selectChats);
+  const dispatch = useDispatch();
   const hendlSubmit = (newChatName) => {
     const newChat = {
       name: newChatName,
@@ -12,7 +18,13 @@ export function ChatList({ chats, hendlDel, addChat }) {
       id: `chat${Date.now()}`,
       avatar: null,
     };
-    addChat(newChat);
+    dispatch(addChat(newChat));
+  };
+
+  const hendleRemoveChat = (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+    dispatch(deleteChat(id));
+    dispatch(clearMessages(id));}
   };
   return (
     <>
@@ -27,14 +39,14 @@ export function ChatList({ chats, hendlDel, addChat }) {
                 lstMsg={chat.lstMsg}
               />
             </NavLink>
-            <button onClick={() => hendlDel(chat.id)} className="del-btn">
+            <button onClick={() => hendleRemoveChat(chat.id)} className="del-btn">
               <DeleteForeverSharpIcon />
             </button>
           </div>
         ))}
       </div>
-      
-      <Form onSubmit={hendlSubmit}/>
+
+      <Form onSubmit={hendlSubmit} />
       <Outlet />
     </>
   );

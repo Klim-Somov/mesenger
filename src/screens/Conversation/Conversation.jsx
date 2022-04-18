@@ -1,23 +1,29 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
+import { addMessage } from "../../store/mesages/actions";
+import { selectMessages } from "../../store/mesages/selectors";
 import { AUTHORS } from "../../utils/constants";
 
-export function Conversation({ messages, addMessage }) {
+export function Conversation() {
   const { id } = useParams();
-
+  const messages = useSelector(selectMessages);
+  const dispatch = useDispatch();
   const timeout = useRef();
   const wrapperRef = useRef();
 
   const sendMessages = (text) => {
-    addMessage(
-      {
-        author: AUTHORS.human,
-        text,
-        id: Date.now(),
-      },
-      id
+    dispatch(
+      addMessage(
+        {
+          author: AUTHORS.human,
+          text,
+          id: Date.now(),
+        },
+        id
+      )
     );
   };
 
@@ -51,7 +57,7 @@ export function Conversation({ messages, addMessage }) {
             <Form onSubmit={sendMessages} />
           </div>
           <div>
-            <Messages messages={messages[id]} />{" "}
+            <Messages messages={messages[id]} />
           </div>
         </div>
       </header>
