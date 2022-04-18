@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
@@ -31,13 +31,15 @@ export function Conversation() {
     const lastMessage = messages[id]?.[messages[id]?.length - 1];
     if (lastMessage?.author === AUTHORS.human) {
       timeout.current = setTimeout(() => {
-        addMessage(
-          {
-            author: AUTHORS.robot,
-            text: "want to talk?",
-            id: Date.now(),
-          },
-          id
+        dispatch(
+          addMessage(
+            {
+              author: AUTHORS.robot,
+              text: "want to talk?",
+              id: Date.now(),
+            },
+            id
+          )
         );
       }, 1200);
     }
