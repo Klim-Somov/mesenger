@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
-import { addMessage } from "../../store/mesages/actions";
-import { selectMessagesByChatId } from "../../store/mesages/selectors";
+import { addMessage, addMessageWithReply } from "../../store/messages/actions";
+import { selectMessagesByChatId } from "../../store/messages/selectors";
 import { AUTHORS } from "../../utils/constants";
 
 export function Conversation() {
@@ -14,12 +14,12 @@ export function Conversation() {
   const messages = useSelector(getMessages);
   const dispatch = useDispatch();
 
-  const timeout = useRef();
+  
   const wrapperRef = useRef();
 
   const sendMessages = (text) => {
     dispatch(
-      addMessage(
+      addMessageWithReply(
         {
           author: AUTHORS.human,
           text,
@@ -30,26 +30,26 @@ export function Conversation() {
     );
   };
 
-  useEffect(() => {
-    const lastMessage = messages?.[messages?.length - 1];
-    if (lastMessage?.author === AUTHORS.human) {
-      timeout.current = setTimeout(() => {
-        dispatch(
-          addMessage(
-            {
-              author: AUTHORS.robot,
-              text: "want to talk?",
-              id: Date.now(),
-            },
-            id
-          )
-        );
-      }, 1200);
-    }
-    return () => {
-      clearTimeout(timeout.current);
-    };
-  }, [messages]);
+  // useEffect(() => {
+  //   const lastMessage = messages?.[messages?.length - 1];
+  //   if (lastMessage?.author === AUTHORS.human) {
+  //     timeout.current = setTimeout(() => {
+  //       dispatch(
+  //         addMessage(
+  //           {
+  //             author: AUTHORS.robot,
+  //             text: "want to talk?",
+  //             id: Date.now(),
+  //           },
+  //           id
+  //         )
+  //       );
+  //     }, 1200);
+  //   }
+  //   return () => {
+  //     clearTimeout(timeout.current);
+  //   };
+  // }, [messages]);
   if (!messages) {
     return <Navigate to="/conversation" replace />;
   }

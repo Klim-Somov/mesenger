@@ -6,7 +6,7 @@ import { Form } from "../Form/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { selectChats } from "../../store/conversation/selectors";
 import { addChat, deleteChat } from "../../store/conversation/actions";
-import { clearMessages } from "../../store/mesages/actions";
+import { clearMessages } from "../../store/messages/actions";
 
 export function ChatList() {
   const chats = useSelector(selectChats);
