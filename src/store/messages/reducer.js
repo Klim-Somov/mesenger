@@ -1,7 +1,9 @@
 import { ADD_CHAT } from "../conversation/actions";
 import { ADD_MESSAGE, CLEAR_MESSAGES_FOR_CHAT } from "./actions";
 
-const initialState = {};
+const initialState = {
+  id:[]
+};
 
 export const messagesReducer = (state = initialState, { type, payload }) => {
   switch (type) {

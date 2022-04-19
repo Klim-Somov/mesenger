@@ -14,7 +14,6 @@ export function Conversation() {
   const getMessages = useMemo(() => selectMessagesByChatId(id), [id]);
   const messages = useSelector(getMessages);
   const dispatch = useDispatch();
-  
 
   const wrapperRef = useRef();
 
@@ -30,7 +29,6 @@ export function Conversation() {
       )
     );
   };
-
   // useEffect(() => {
   //   const lastMessage = messages?.[messages?.length - 1];
   //   if (lastMessage?.author === AUTHORS.human) {
@@ -51,10 +49,9 @@ export function Conversation() {
   //     clearTimeout(timeout.current);
   //   };
   // }, [messages]);
-  if (!messages) {
+  if (!messages[id]) {
     return <Navigate to="/conversation" replace />;
   }
-
   return (
     <div className="App" ref={wrapperRef}>
       <header className="App-header">
