@@ -31,7 +31,7 @@ export function ChatList() {
       <div>
         {chats.map((chat) => (
           <div className="chatList" key={chat.id}>
-            <NavLink key={chat.id} to={`/conversation/${chat.id}`}>
+            <NavLink to={`/conversation/${chat.id}`}>
               <Chat
                 avatar={chat.avatar}
                 id={chat.id}

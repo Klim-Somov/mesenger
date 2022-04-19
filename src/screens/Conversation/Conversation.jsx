@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
+import { selectChats } from "../../store/conversation/selectors";
 import { addMessage, addMessageWithReply } from "../../store/messages/actions";
 import { selectMessagesByChatId } from "../../store/messages/selectors";
 import { AUTHORS } from "../../utils/constants";
@@ -13,8 +14,8 @@ export function Conversation() {
   const getMessages = useMemo(() => selectMessagesByChatId(id), [id]);
   const messages = useSelector(getMessages);
   const dispatch = useDispatch();
-
   
+
   const wrapperRef = useRef();
 
   const sendMessages = (text) => {

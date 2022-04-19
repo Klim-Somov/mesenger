@@ -1,6 +1,6 @@
 import { ADD_CHAT, DEL_CHAT } from "./actions";
-
-const initialState = [
+ 
+export const initialState = [
   {
     name: "Таня",
     lstMsg: "Brunch this weekend?",

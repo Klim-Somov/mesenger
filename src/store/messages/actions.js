@@ -7,7 +7,7 @@ export const CLEAR_MESSAGES_FOR_CHAT = "MESSAGES::CLEAR_MESSAGES_FOR_CHAT";
 export const addMessage = (newMsg, chatId) => ({
   type: ADD_MESSAGE,
   payload: {
-    newMsg: newMsg,
+    newMsg,
     chatId,
   },
 });
