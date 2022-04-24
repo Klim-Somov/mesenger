@@ -1,30 +1,27 @@
 import { Button, CircularProgress } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { apiUrl } from "../../utils/constants";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFacts } from "../../store/facts/actions";
+import {
+  selectError,
+  selectFacts,
+  selectStatus,
+} from "../../store/facts/selectors";
+import { FETCH_STATUSES } from "../../utils/constants";
 
 export const Articles = () => {
-  const [articles, setArticles] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const request = async () => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(apiUrl);
-      if (!response.ok) {
-        throw new Error(`failed with ${response.status}`);
-      }
-      const result = await response.json();
-      const data = result.text;
-      setArticles(data);
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setIsLoading(false);
-    }
+  const dispatch = useDispatch();
+  const facts = useSelector(selectFacts);
+  const status = useSelector(selectStatus);
+  const error = useSelector(selectError);
+
+  const request = () => {
+    dispatch(getFacts());
   };
   useEffect(() => {
     request();
   }, []);
+
   return (
     <div
       style={{
@@ -38,8 +35,8 @@ export const Articles = () => {
       <Button variant="contained" onClick={request}>
         Generate Fact
       </Button>
-      <p style={{ fontSize: "20px", color: "purple" }}>{articles}</p>
-      {isLoading && <CircularProgress />}
+      <p style={{ fontSize: "20px", color: "purple" }}>{facts}</p>
+      {status == FETCH_STATUSES.REQUEST && <CircularProgress />}
       {error && <h4>{error}</h4>}
     </div>
   );
