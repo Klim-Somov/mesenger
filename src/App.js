@@ -55,7 +55,7 @@ function App() {
                 })}
                 to="/articles"
               >
-                ARTICLES
+                Random Useless Facts 
               </NavLink>
             </li>
           </ul>
