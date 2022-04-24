@@ -1,5 +1,5 @@
 import { ADD_CHAT, DEL_CHAT } from "./actions";
- 
+
 export const initialState = [
   {
     name: "Таня",
@@ -7,6 +7,7 @@ export const initialState = [
     id: "chat1",
     avatar:
       "https://images.androeed.ru/icons/2022/02/14/ico-ninja-turtles-legends-1644870122.webp",
+    
   },
   {
     name: "Дедушка",
@@ -14,6 +15,7 @@ export const initialState = [
     id: "chat2",
     avatar:
       "https://ic.pics.livejournal.com/tanjand/44781189/99899304/99899304_original.jpg",
+    
   },
   {
     name: "Вадим",
@@ -21,15 +23,16 @@ export const initialState = [
     id: "chat3",
     avatar:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREh-zqIliPz-WGwVfQJQZZUy5XXAudS0qxAg&usqp=CAU",
+    
   },
   {
     name: "Арсен",
     lstMsg: "okик",
     id: "chat4",
     avatar: "https://images.wbstatic.net/big/new/8600000/8606489-1.jpg",
+    
   },
 ];
-
 
 export const conversationReducer = (
   state = initialState,

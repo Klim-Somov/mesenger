@@ -1,11 +1,11 @@
 import { ADD_CHAT } from "../conversation/actions";
+import { initialState } from "../conversation/reducer";
 import { ADD_MESSAGE, CLEAR_MESSAGES_FOR_CHAT } from "./actions";
 
-const initialState = {
-  id:[]
-};
+const messages = {};
 
-export const messagesReducer = (state = initialState, { type, payload }) => {
+console.log(messages);
+export const messagesReducer = (state = messages, { type, payload }) => {
   switch (type) {
     case ADD_MESSAGE: {
       return {
@@ -20,12 +20,11 @@ export const messagesReducer = (state = initialState, { type, payload }) => {
       };
     }
     case CLEAR_MESSAGES_FOR_CHAT: {
-     const copy = {...state}
-     delete copy[payload]
+      const copy = { ...state };
+      delete copy[payload];
       return {
-        copy
-
-      }
+        copy,
+      };
     }
 
     default:

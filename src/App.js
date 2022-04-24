@@ -6,6 +6,7 @@ import { Profile } from "./screens/Profile/Profile";
 import { ChatList } from "./components/ChatList/ChatList";
 import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
+import { Articles } from "./screens/Articles/Articles";
 
 function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
@@ -47,6 +48,16 @@ function App() {
                 CHAT
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                style={({ isActive }) => ({
+                  color: isActive ? "black" : "white",
+                })}
+                to="/articles"
+              >
+                ARTICLES
+              </NavLink>
+            </li>
           </ul>
 
           <Switch
@@ -59,6 +70,7 @@ function App() {
         </div>
         <Routes>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/articles" element={<Articles />} />
           <Route path="/conversation" element={<ChatList />}>
             <Route path=":id" element={<Conversation />} />
           </Route>

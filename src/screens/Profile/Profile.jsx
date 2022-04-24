@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Checkbox } from "@mui/material";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
@@ -11,15 +11,23 @@ export function Profile() {
   const dispatch = useDispatch();
   const name = useSelector(selectName);
   const showName = useSelector(selectShowName);
-
+  const first = useRef();
   const hendleClick = () => {
     dispatch(toggleCheckbox);
   };
+  
+  
+  useEffect(() => {
+    first.current = name;
+  }, [name]);
+  console.log(first.current);
+
+
   const hendleSubmit = (text) => {
     dispatch(setName(text));
   };
   return (
-    <div 
+    <div
       style={{
         gap: 25,
         display: "flex",
@@ -36,7 +44,7 @@ export function Profile() {
         icon={<FavoriteBorder />}
         checkedIcon={<Favorite />}
       />
-      
+
       {showName && <span>{name}</span>}
       <Form onSubmit={hendleSubmit} />
     </div>

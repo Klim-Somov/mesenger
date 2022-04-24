@@ -49,7 +49,7 @@ export function Conversation() {
   //     clearTimeout(timeout.current);
   //   };
   // }, [messages]);
-  if (!messages[id]) {
+  if (!messages) {
     return <Navigate to="/conversation" replace />;
   }
   return (
