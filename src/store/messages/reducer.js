@@ -2,7 +2,12 @@ import { ADD_CHAT } from "../conversation/actions";
 import { initialState } from "../conversation/reducer";
 import { ADD_MESSAGE, CLEAR_MESSAGES_FOR_CHAT } from "./actions";
 
-const messages = {};
+const messages = {
+  chat1: [],
+  chat2: [],
+  chat3: [],
+  chat4: []
+};
 
 console.log(messages);
 export const messagesReducer = (state = messages, { type, payload }) => {
