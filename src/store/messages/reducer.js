@@ -15,7 +15,7 @@ export const messagesReducer = (state = messages, { type, payload }) => {
     case ADD_MESSAGE: {
       return {
         ...state,
-        [payload.chatId]: [...state[payload.chatId], payload.newMsg],
+        [payload.id]: [...state[payload.id], payload.newMsg],
       };
     }
     case ADD_CHAT: {

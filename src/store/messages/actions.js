@@ -4,23 +4,23 @@ import { AUTHORS } from "../../utils/constants";
 export const ADD_MESSAGE = "MESSAGES::ADD_MESSAGE";
 export const CLEAR_MESSAGES_FOR_CHAT = "MESSAGES::CLEAR_MESSAGES_FOR_CHAT";
 
-export const addMessage = (newMsg, chatId) => ({
+export const addMessage = (newMsg, id) => ({
   type: ADD_MESSAGE,
   payload: {
     newMsg,
-    chatId,
+    id,
   },
 });
 
-export const clearMessages = (chatId) => ({
+export const clearMessages = (id) => ({
   type: CLEAR_MESSAGES_FOR_CHAT,
-  payload: chatId,
+  payload: id,
 });
 let timeout
 
-export const addMessageWithReply = (newMsg, chatId) => (dispatch) => {
+export const addMessageWithReply = (newMsg, id) => (dispatch) => {
   
-  dispatch(addMessage(newMsg, chatId));
+  dispatch(addMessage(newMsg, id));
 
   if (newMsg?.author === AUTHORS.human) {
     clearMessages(timeout);
@@ -32,7 +32,7 @@ export const addMessageWithReply = (newMsg, chatId) => (dispatch) => {
             text: "want to talk?",
             id: Date.now(),
           },
-          chatId
+          id
         )
       );
     }, 1200);
