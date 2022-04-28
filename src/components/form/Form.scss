@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  &__input {
+    background: #424b5f;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0;
+    border-radius: 5px;
+    color: #000000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    height: 37px;
+    line-height: 1.5em;
+    margin: 0;
+    text-align: left;
+  }
+
+  &__btn {
+    background-color: #65c178;
+    vertical-align: middle;
+    padding: 0 37px;
+    height: 37px;
+    line-height: 37px;
+    position: relative;
+    top: -1px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: #65c178;
+    border: transparent;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+.mybtn.MuiButton-root:hover {
+  background-color: #65c178;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 1px solid rgb(0, 0, 0) !important;
+}
+.form-content {
+  display: flex;
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+}
+.input-messages {
+}
