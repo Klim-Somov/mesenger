@@ -49,7 +49,8 @@ export function Conversation() {
   //     clearTimeout(timeout.current);
   //   };
   // }, [messages]);
-  if (!messages) {
+  console.log(messages);
+  if (!messages ) {
     return <Navigate to="/conversation" replace />;
   }
   return (

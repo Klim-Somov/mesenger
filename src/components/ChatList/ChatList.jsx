@@ -16,7 +16,7 @@ export function ChatList() {
       name: newChatName,
       lstMsg: "",
       id: `chat${Date.now()}`,
-      avatar: null,
+      avatar: "https://img.freepik.com/free-vector/man-avatar-profile-on-round-icon_24640-14044.jpg",
     };
     dispatch(addChat(newChat));
   };
