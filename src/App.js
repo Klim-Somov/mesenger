@@ -78,18 +78,20 @@ function App() {
           />
         </div>
         <Routes>
-          
           <Route path="/" element={<PublicRoute authed={authed} />}>
             <Route path="" element={<Home onAuth={hendleLogin} />} />
           </Route>
-          
+
           <Route path="/profile" element={<PrivatRoute authed={authed} />}>
             <Route path="" element={<Profile onLogout={hendleLogout} />} />
           </Route>
 
           <Route path="/articles" element={<Articles />} />
-          <Route path="/conversation" element={<ChatList />}>
-            <Route path=":id" element={<Conversation />} />
+
+          <Route path="/conversation" element={<PrivatRoute authed={authed} />}>
+            <Route path="" element={<ChatList />}>
+              <Route path=":id" element={<Conversation />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
