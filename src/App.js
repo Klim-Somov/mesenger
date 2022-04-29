@@ -7,6 +7,8 @@ import { ChatList } from "./components/ChatList/ChatList";
 import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { Articles } from "./screens/Articles/Articles";
+import { PrivatRoute } from "./components/PrivatRoute/PrivatRoute";
+import { Home } from "./screens/Home/Home";
 
 function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
@@ -16,6 +18,12 @@ function App() {
   //   return acc;
   // }, {});
   const [theme, setTheme] = useState("dark");
+
+  const [authed, setAuthed] = useState(false);
+
+  const hendleLogin = () => setAuthed(false);
+
+  const hendleLogout = () => setAuthed(true);
 
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
@@ -55,7 +63,7 @@ function App() {
                 })}
                 to="/articles"
               >
-                Random Useless Facts 
+                Random Useless Facts
               </NavLink>
             </li>
           </ul>
@@ -69,7 +77,11 @@ function App() {
           />
         </div>
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Home onAuth={hendleLogin} />} />
+          <Route path="/profile" element={<PrivatRoute authed={authed} />}>
+            <Route path="" element={<Profile onLogout={hendleLogout} />} />
+          </Route>
+
           <Route path="/articles" element={<Articles />} />
           <Route path="/conversation" element={<ChatList />}>
             <Route path=":id" element={<Conversation />} />
