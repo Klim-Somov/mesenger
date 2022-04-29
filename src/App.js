@@ -8,6 +8,7 @@ import { ThemeContext } from "./utils/ThemeContext";
 import Switch from "@mui/material/Switch";
 import { Articles } from "./screens/Articles/Articles";
 import { PrivatRoute } from "./components/PrivatRoute/PrivatRoute";
+import { PublicRoute } from "./components/PublicRoute/PublicRoute";
 import { Home } from "./screens/Home/Home";
 
 function App() {
@@ -21,9 +22,9 @@ function App() {
 
   const [authed, setAuthed] = useState(false);
 
-  const hendleLogin = () => setAuthed(false);
+  const hendleLogin = () => setAuthed(true);
 
-  const hendleLogout = () => setAuthed(true);
+  const hendleLogout = () => setAuthed(false);
 
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
@@ -77,7 +78,11 @@ function App() {
           />
         </div>
         <Routes>
-          <Route path="/" element={<Home onAuth={hendleLogin} />} />
+          
+          <Route path="/" element={<PublicRoute authed={authed} />}>
+            <Route path="" element={<Home onAuth={hendleLogin} />} />
+          </Route>
+          
           <Route path="/profile" element={<PrivatRoute authed={authed} />}>
             <Route path="" element={<Profile onLogout={hendleLogout} />} />
           </Route>

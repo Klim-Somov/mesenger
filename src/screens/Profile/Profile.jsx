@@ -7,7 +7,7 @@ import { setName, toggleCheckbox } from "../../store/profile/actions";
 import { Form } from "../../components/Form/Form";
 import { selectName, selectShowName } from "../../store/profile/selectors";
 
-export function Profile() {
+export function Profile({onLogout}) {
   const dispatch = useDispatch();
   const name = useSelector(selectName);
   const showName = useSelector(selectShowName);
@@ -15,13 +15,11 @@ export function Profile() {
   const hendleClick = () => {
     dispatch(toggleCheckbox);
   };
-  
-  
+
   useEffect(() => {
     first.current = name;
   }, [name]);
   console.log(first.current);
-
 
   const hendleSubmit = (text) => {
     dispatch(setName(text));
@@ -37,7 +35,7 @@ export function Profile() {
       }}
     >
       <h2>Profile</h2>
-
+      <button onClick={onLogout}>LOGOUT</button>
       <span>show name</span>
       <Checkbox
         onChange={hendleClick}
