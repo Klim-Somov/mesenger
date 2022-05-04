@@ -6,8 +6,9 @@ import Favorite from "@mui/icons-material/Favorite";
 import { setName, toggleCheckbox } from "../../store/profile/actions";
 import { Form } from "../../components/Form/Form";
 import { selectName, selectShowName } from "../../store/profile/selectors";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-export function Profile({onLogout}) {
+export function Profile({ onLogout }) {
   const dispatch = useDispatch();
   const name = useSelector(selectName);
   const showName = useSelector(selectShowName);
@@ -15,11 +16,6 @@ export function Profile({onLogout}) {
   const hendleClick = () => {
     dispatch(toggleCheckbox);
   };
-
-  useEffect(() => {
-    first.current = name;
-  }, [name]);
-  console.log(first.current);
 
   const hendleSubmit = (text) => {
     dispatch(setName(text));
@@ -35,7 +31,14 @@ export function Profile({onLogout}) {
       }}
     >
       <h2>Profile</h2>
-      <button onClick={onLogout}>LOGOUT</button>
+      <div
+        onClick={onLogout}
+        style={{ display: "flex", alignItems: "center", gap: "15px", cursor: 'pointer' }}
+      >
+        logout
+        <LogoutIcon />
+      </div>
+
       <span>show name</span>
       <Checkbox
         onChange={hendleClick}

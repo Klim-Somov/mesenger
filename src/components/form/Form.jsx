@@ -8,7 +8,7 @@ import { ThemeContext } from "../../utils/ThemeContext";
 
 export  function Form({ onSubmit }) {
   const [value, setValue] = useState("");
-  const {changeTheme} = useContext(ThemeContext)
+  // const {changeTheme} = useContext(ThemeContext)
 
   const submitHendler = (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export  function Form({ onSubmit }) {
       <TextField
         className="myTextField"
         id="standard-basic"
-        label="Введите сообщение"
+        label="Начните печатать"
         variant="standard"
         value={value}
         onChange={hendleChange}
@@ -35,9 +35,9 @@ export  function Form({ onSubmit }) {
       className="form__btn mybtn" variant="contained" endIcon={<SendIcon />} type="">
         Send
       </Button>
-      <Button
+      {/* <Button
       onClick={changeTheme}
-      >useContextTest</Button>
+      >useContextTest</Button> */}
     </form>
     
   );
