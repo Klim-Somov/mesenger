@@ -10,10 +10,12 @@ import { getDatabase, ref } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCekTDB8B7Q5pn8mt3-u2b7CRwq6gAyjjo",
   authDomain: "webmsngr.firebaseapp.com",
+  databaseURL:" https://webmsngr-default-rtdb.asia-southeast1.firebasedatabase.app/",
   projectId: "webmsngr",
   storageBucket: "webmsngr.appspot.com",
   messagingSenderId: "280971936385",
   appId: "1:280971936385:web:f834ee35c3acb247684380",
+  
 };
 
 const app = initializeApp(firebaseConfig);

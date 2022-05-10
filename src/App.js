@@ -11,11 +11,12 @@ import { PrivatRoute } from "./components/PrivatRoute/PrivatRoute";
 import { PublicRoute } from "./components/PublicRoute/PublicRoute";
 import { Home } from "./screens/Home/Home";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, logOut } from "./servises/firebase";
+import { auth, logOut, userNameRef } from "./servises/firebase";
 import { useSelector } from "react-redux";
-import { selectName } from "./store/profile/selectors";
+import { selectName, selectUserName } from "./store/profile/selectors";
 import PersonIcon from "@mui/icons-material/Person";
 import SpaceBlog from "./components/SpaceBlog/SpaceBlog";
+import { onValue } from "firebase/database";
 function App() {
   const girlColor = " rgba(26, 144, 255, 0.698)";
   const boyColor = "rgba(255, 26, 236, 0.698)";
@@ -30,10 +31,12 @@ function App() {
   const hendleLogin = () => setAuthed(true);
 
   const name = auth?.currentUser?.email;
+  // const name = useSelector(selectUserName)
 
+  
   useEffect(() => {
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log(auth);
       if (user) {
         hendleLogin();
       } else {

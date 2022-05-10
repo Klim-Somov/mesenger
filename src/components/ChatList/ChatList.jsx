@@ -9,6 +9,8 @@ import { addChat, deleteChat } from "../../store/conversation/actions";
 import { clearMessages } from "../../store/messages/actions";
 
 export function ChatList() {
+
+  // const [chats, setchats] = useState([])
   const chats = useSelector(selectChats);
   const dispatch = useDispatch();
   const hendlSubmit = (newChatName) => {

@@ -25,7 +25,7 @@ export const Home = ({ isSignUp }) => {
           Авторизуйтесь
         </h4>
         <LoginForm onSubmit={handleSubmit} />
-       <div style={{ textAlign: "center", marginTop: "20px", color: 'red'}}> {error && <h5>{error}</h5>}</div>
+       <div style={{ textAlign: "center", marginTop: "20px", color: 'red'}}> {error && <h5>{ }</h5>}</div>
         <div className="login" style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
           <Link to={isSignUp ? "/" : "/signup"}>
             {isSignUp ? "to Login" : "Зарегистрироваться?"}

@@ -11,11 +11,13 @@ import { AUTHORS } from "../../utils/constants";
 export function Conversation() {
   const { id } = useParams();
 
+  // const [messages, setmessages] = useState([])
+
   const getMessages = useMemo(() => selectMessagesByChatId(id), [id]);
   const messages = useSelector(getMessages);
   const dispatch = useDispatch();
 
-  const wrapperRef = useRef();
+  
 
   const sendMessages = (text) => {
     dispatch(
@@ -54,7 +56,7 @@ export function Conversation() {
     return <Navigate to="/conversation" replace />;
   }
   return (
-    <div className="App" ref={wrapperRef}>
+    <div className="App">
       <header className="App-header">
         <div className="form-content">
           <div className="input-messages">
