@@ -1,11 +1,12 @@
-import { onValue, push } from "firebase/database";
+  
+  import { onValue, push } from "firebase/database";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useParams } from "react-router";
 import { Form } from "../../components/Form/Form";
 import { Messages } from "../../components/Messages/Messages";
-import { getMsgsRefById } from "../../servises/firebase";
+import { auth, getMsgsListRefById, getMsgsRefById } from "../../servises/firebase";
 import { selectChats } from "../../store/conversation/selectors";
 import { addMessage, addMessageWithReply } from "../../store/messages/actions";
 import { selectMessagesByChatId } from "../../store/messages/selectors";
@@ -20,9 +21,9 @@ export function Conversation() {
   // const messages = useSelector(getMessages);
   const dispatch = useDispatch();
 
-  const sendMessages = (text) => {
-    push(getMsgsRefById(id), {
-      author: AUTHORS.human,
+  const sendMessage = (text) => {
+    push(getMsgsListRefById(id), {
+      author: auth.currentUser.email,
       text,
       id: Date.now(),
     });
@@ -39,11 +40,12 @@ export function Conversation() {
   };
   useEffect(() => {
     const unsubscribe = onValue(getMsgsRefById(id), (snapshot) => {
+      console.log(snapshot.val())
       const val = snapshot.val();
       if (!snapshot.val()?.exists) {
         setMessages(null);
       } else {
-        console.log(val);
+        console.log(val.messageList);
         setMessages(Object.values(snapshot.val().messageList || {}));
       }
     });
@@ -79,7 +81,7 @@ export function Conversation() {
       <header className="App-header">
         <div className="form-content">
           <div className="input-messages">
-            <Form onSubmit={sendMessages} />
+            <Form onSubmit={sendMessage} />
           </div>
           <div>
             <Messages messages={messages} />
