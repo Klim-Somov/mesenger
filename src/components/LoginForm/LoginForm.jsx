@@ -10,6 +10,7 @@ export const LoginForm = ({ onSubmit }) => {
   const handleChangeLogin = (e) => {
     setLogin(e.target.value);
   };
+  
   const handleChangePass = (e) => {
     setPass(e.target.value);
   };
