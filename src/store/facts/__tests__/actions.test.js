@@ -18,24 +18,24 @@ import {
     });
   });
   
+
+  // describe("getFacts", () => {
+  //   it("dispatches getArticlesReq", () => {
+  //     const mockDispatch = jest.fn();
+  //     fetch.mockResponse(JSON.stringify([]));
   
-  describe("getFacts", () => {
-    it("dispatches getArticlesReq", () => {
-      const mockDispatch = jest.fn();
-      fetch.mockResponse(JSON.stringify([]));
+  //     getFacts()(mockDispatch);
   
-      getFacts()(mockDispatch);
+  //     expect(mockDispatch).toHaveBeenCalledWith(getFactsRequest());
+  //   });
   
-      expect(mockDispatch).toHaveBeenCalledWith(getFactsRequest());
-    });
+  //   it("dispatches getFactsSuc with fetch result", async () => {
+  //     const data = [{ name: "test" }];
+  //     fetch.mockResponse(JSON.stringify(data));
+  //     const mockDispatch = jest.fn();
   
-    it("dispatches getFactsSuc with fetch result", async () => {
-      const data = [{ name: "test" }];
-      fetch.mockResponse(JSON.stringify(data));
-      const mockDispatch = jest.fn();
-  
-      await getFacts()(mockDispatch);
-      expect(mockDispatch).toHaveBeenLastCalledWith(getFactsSuccess(data));
-    });
-  });
+  //     await getFacts()(mockDispatch);
+  //     expect(mockDispatch).toHaveBeenLastCalledWith(getFactsSuccess(data));
+  //   });
+  // });
   
